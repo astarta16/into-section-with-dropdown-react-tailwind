@@ -25,3 +25,20 @@ img {
 ul {
     list-style-type: none;
 }
+
+.navbar {
+    position: absolute;
+    top:-100%;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    padding: 1rem;
+    transition:all 0.3 ease-in-out;
+    z-index: -1;
+}
+
+.navbar.open {
+    background-color: #fff;
+    top:5rem;
+    z-index: 99;
+}

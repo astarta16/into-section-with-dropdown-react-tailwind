@@ -5,12 +5,86 @@ import audiophile from "./images/client-audiophile.svg"
 import databiz from "./images/client-databiz.svg"
 import maker from "./images/client-maker.svg"
 import meet from "./images/client-meet.svg"
+import logo from "./images/logo.svg"
+import chevronDown from "./images/icon-arrow-down.svg"
+import menuOpen from "./images/icon-menu.svg"
+import closeMenu from "./images/icon-close-menu.svg"
+import todolist from "./images/icon-todo.svg"
+import calendar from "./images/icon-calendar.svg"
+import reminders from "./images/icon-reminders.svg"
+import planning from "./images/icon-planning.svg"
 
 
 function App() {
-  return (
+  const handleOpenMenu = () => {
+    const navbar = document.querySelector(".navbar")
+    const menuButton = document.querySelector(".menu-button")
+    navbar.classList.toggle("open")
 
+    if(navbar.classList.contains("open")) {
+      menuButton.src = closeMenu
+    } else {
+      menuButton.src = menuOpen
+    }
+  }
+
+
+
+
+  return (
 <>
+<header className="p-5 flex items-center justify-between">
+  <div>
+    <img src={logo} alt="" />
+  <nav className="navbar">
+    <div>
+      <button> Features  <img src = {chevronDown} /></button>
+    </div>
+
+    <ul className="mt-2">
+      <li className="flex items-center justify-start text-sm mb-2">
+        <img src={todolist} className="mr-2" /> Todo List
+      </li>
+      <li className="flex items-center justify-start text-sm mb-2">
+      <img src={calendar} className="mr-2" /> Calendar
+      </li>
+      <li className="flex items-center justify-start text-sm mb-2">
+      <img src={reminders} className="mr-2" /> Reminders
+      </li>
+      <li className="flex items-center justify-start text-sm mb-2">
+      <img src={planning}  className="mr-2" /> Planning
+      </li>
+    </ul>
+
+    <div>
+      <button>
+        Company <img src = {chevronDown} />
+        </button>
+        <ul className="mt-2">
+      <li className="flex items-center justify-start text-sm mb-2">History</li>
+      <li className="flex items-center justify-start text-sm mb-2">Our Team</li>
+      <li className="flex items-center justify-start text-sm mb-2">Blog</li>
+    </ul>
+
+    </div>
+    <div><button>Careers</button></div>
+    <div><button>About</button></div>
+  </nav>
+  </div>
+
+  <div>
+    <button onClick={handleOpenMenu}>
+      <img  src={menuOpen} className="menu-button"/>
+    </button>
+  </div>
+
+<div className="hidden lg:block">
+  <button>Login</button>
+  <button>Sign up</button>
+</div>
+</header>
+
+
 <section className="flex  flex-col-reverse py-20 md:grid  md:gap-10 md:grid-cols-2 md:place-items-center max-w-4xl lg:max-w-5xl md:mx-auto">
   <article className="text-center md:text-left px-5 xl:px-0 mt-10 md:mt-0">
     <h1 className="font-bold text-4xl lg:text-6xl mb-5">Make remote work</h1>
