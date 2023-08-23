@@ -19,32 +19,24 @@ import { useState } from 'react';
 function App() {
   const [openFeatures, setOpenFeatures] = useState(false)
   const [openCompany, setOpenCompany] = useState(false)
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleOpenMenu = () => {
-    const navbar = document.querySelector(".navbar")
-    const menuButton = document.querySelector(".menu-button")
-
-    navbar.classList.toggle("open")
-
-    if (navbar.classList.contains("open")) {
-      menuButton.src = closeMenu
-    } else {
-      menuButton.src = menuOpen
-    }
-  }
+    setNavbarOpen(!navbarOpen);
+  };
 
   return (
     <>
-      <header className="p-5 flex items-center justify-between">
+       <header className="p-5 flex items-center justify-between">
         <div className="lg:flex lg:items-start lg:justify-start">
           <img src={logo} alt="" className="lg:mr-5" />
-          <nav className="navbar">
+          <nav className={`navbar ${navbarOpen ? 'open' : ''}`}>
             <div>
               <button
                 onClick={() => setOpenFeatures(!openFeatures)}
                 className="flex items-center justify-start"
               >
-                Features{" "}
+                Features{' '}
                 {openFeatures ? (
                   <img src={chevronUp} alt="" className="ml-2" />
                 ) : (
@@ -74,7 +66,7 @@ function App() {
                 onClick={() => setOpenCompany(!openCompany)}
                 className="flex items-center justify-start"
               >
-                Company{" "}
+                Company{' '}
                 {openCompany ? (
                   <img src={chevronUp} alt="" className="ml-2" />
                 ) : (
@@ -106,7 +98,7 @@ function App() {
 
         <div className="lg:hidden">
           <button onClick={handleOpenMenu}>
-            <img src={menuOpen} alt="" className="menu-button" />
+            <img src={navbarOpen ? closeMenu : menuOpen} alt="" className="menu-button" />
           </button>
         </div>
 
